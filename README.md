@@ -67,4 +67,3 @@ These are my keybindings:
 | `SUPER + ↑` | Move Focus Up | Focus window above |
 | `SUPER + ↓` | Move Focus Down | Focus window below |
 
-Overall, thanks for using my 
