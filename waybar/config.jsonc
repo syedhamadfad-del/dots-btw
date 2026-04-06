@@ -1,0 +1,155 @@
+{
+  "layer": "top",
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/sep",
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "custom/sep",
+    "pulseaudio",
+    "custom/sep",
+    "memory",
+    "custom/sep",
+    "network",
+    "custom/sep",
+    "battery",
+    "custom/sep",
+    "custom/weather",
+    "custom/sep",
+    "clock",
+    "custom/sep",
+    "custom/notification",
+    "custom/sep"
+  ],
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+      "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "phone-muted": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "ignored-sinks": [
+      "Easy Effects Sink"
+    ]
+  },
+  "network": {
+    "interface": "wlan0",
+    "format": "{ifname}",
+    "format-wifi": "{essid} ",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+    "format-disconnected": "Disconnected", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 30
+  },
+  "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='16pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  "custom/weather": {
+    "exec": "curl -s 'wttr.in/Kuwait?format=%c%20%t' | sed 's/  */ /g'",
+    "interval": 600,
+    "tooltip": false
+  },
+  "mpris": {
+    "format": " {title}",
+    "format-paused": " {title}",
+    "max-length": 10,
+  },
+  "disk": {
+    "interval": 30,
+    "max-length": 40,
+    "format": "{free}",
+    "path": "/home/syedh"
+  },
+  "disk": {
+    "max-length": 40,
+    "interval": 30,
+    "format": " {free}",
+    "unit": "GB"
+    // 0.25f GB out of 2000.00 GB available. Alternatively 241.3MiB out of 1.9TiB available.
+  },
+  "memory": {
+    "interval": 30,
+    "format": "󰍛 {used}GiB",
+    "max-length": 15
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 40,
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "🌎 $1",
+      "(.*) - fish": "> [$1]"
+    },
+    "separate-outputs": true
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "", // terminal
+      "2": "󰈹", // browser
+      "3": "", // code
+      "4": "", // music
+      "5": "󰖣", // chat
+      "6": "", // media/images
+      "7": "", // video
+      "8": "", // documents
+      "9": "" // settings/tools
+    },
+    "persistent-workspaces": {
+      "*": 9, // 9 workspaces on every monitor
+      "HDMI-A-1": 3 // only 3 on HDMI-A-1
+    }
+  },
+  "battery": {
+    "format": "{capacity}% {icon}", // default (discharging)
+    "format-charging": "{capacity}% ", // when charging, adds a plug glyph
+    "format-icons": [
+      "", // 0–10%
+      "", // 10–25%
+      "", // 25–50%
+      "", // 50–75%
+      "" // 75–100%
+    ]
+  },
+  "clock": {
+    "format": " {:%A, %m/%d/%y, %H:%M}"
+  },
+  "custom/sep": {
+    "format": " | ",
+    "tooltip": "disabled"
+  }
+}

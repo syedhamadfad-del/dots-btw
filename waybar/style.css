@@ -1,0 +1,19 @@
+* {
+  font-family: JetBrainsMono Nerd Font Propo;
+  font-size: 16px;
+}
+
+window#waybar {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* give all workspace buttons a baseline border */
+#workspaces button {
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+#workspaces button.active {
+  border-bottom: 2px solid;
+  border-radius: 0px;
+}
